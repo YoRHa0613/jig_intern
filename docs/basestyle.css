@@ -1,0 +1,16 @@
+@charset "UTF-8";
+@media screen and (min-width:800px) { /*ブラウザの幅によって表示を変える*/
+  
+.header-title {
+  color: #000fff;
+  font-size: 3vw; /*コメントアウト*/
+}
+}
+
+@media screen and (max-width:400px) { /*ブラウザの幅によって表示を変える*/
+  .header-title {
+    color: #fff000;
+    font-size: 3vw; /*コメントアウト*/
+  }
+  
+}
