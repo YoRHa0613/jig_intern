@@ -4,13 +4,99 @@
     <meta charset="UTF-8">  <!--文字コードの設定-->
     <meta name="viewport" content="width=device-width, initial-scale=1"> <!--おまじない(表示関係の設定)-->
     <link rel="stylesheet" type="text/css" href="./basestyle.css">  <!--おまじない(css,javascriptの読み込み的な)-->
+    <link href="https://fonts.googleapis.com/earlyaccess/kokoro.css" rel="stylesheet"> <!--こころ明朝体使いたかっただけ-->
   </head>
 
   <body>
     <header>
-      <h1 class="header-title">MY PROFILE SITE</h1>
+      <h1 class="header-title">サンプルサイト by YoRHa</h1>
     </header>
-  </body>
 
+    <table border="0">
+      <tr>
+        <td>
+          <h2 class="txt-type1">行列A</h2>
+          
+          <table border='1'> <!--表(行列A)-->
+            <tr><!--行-->
+              <td><input type="number" class="box" name="A1" value="0"></td><!--セル(行列の要素)--> <!--nameを配列にしたいんだが-->
+              <td><input type="number" class="box" name="A2" value="0"></td>
+            </tr>
+
+            <tr>
+              <td><input type="number" class="box" name="A3" value="0"></td>
+              <td><input type="number" class="box" name="A4" value="0"></td>
+            </tr>
+          </table>
+
+        </td>
+
+        <td width="30"></td> <!--行列間の隙間-->
+
+        <td>
+          <h2 class="txt-type1">行列B</h2>
+        
+          <table border='1'> <!--表(行列B)-->
+            <tr>
+              <td><input type="number" class="box" name="B1" value="0"></td>
+              <td><input type="number" class="box" name="B2" value="0"></td>
+            </tr>
+
+            <tr>
+              <td><input type="number" class="box" name="B3" value="0"></td>
+              <td><input type="number" class="box" name="B4" value="0"></td>
+            </tr>
+          </table>
+
+        </td>
+      </tr>
+    </table>
+
+      <p><input type="button" class="calc-btn" onclick="calc(A1,A2,A3,A4,B1,B2,B3,B4);" value="計算"></p> <!--ボタンを押したら計算結果を表示-->
+
+      <h2 class="txt-type1">行列C</h2>
+          
+          <table border='1'> <!--表(行列C)-->
+            <tr><!--行-->
+              <td><input id="C-0" type="number" class="box" readonly=""></td><!--"C-添え字"(後述)-->
+              <td><input id="C-1" type="number" class="box" readonly=""></td>
+            </tr>
+
+            <tr>
+              <td><input id="C-2" type="number" class="box" readonly=""></td>
+              <td><input id="C-3" type="number" class="box" readonly=""></td>
+            </tr>
+          </table>
+
+
+
+      <script>
+        var C; /*二次元配列の宣言とか無いんか*//*計算結果を入れる変数だよ*/
+        function calc(A1,A2,A3,A4,B1,B2,B3,B4){ /*HTML側で配列に値を格納して引数として渡したい感*/
+          let A=[[A1,A2],[A3,A4]];/*行列A*/
+          let B=[[B1,B2],[B3,B4]];/*行列B*/
+          
+
+          for(let i=0;i<=1;i++){   /*積を計算するよ*/
+            for(let j=0;j<=1;j++){
+              for(let k=0;k<=1;k++){
+                C[i][j]=A[i][k]*B[k][j];
+              }
+            }
+          }
+        }
+
+        for(let m=0;m<=1;m++){ /*二次元配列のままではHTML側に値を渡せない？ので"C-添え字"の形で渡す(渡せてんのかこれ)*/
+          for(let n=0;n<=1;n++){ /*↑ https://techacademy.jp/magazine/37409 */
+            for(let l=0;l<=3;l++){
+              document.getElementById("C-"+l).value+=C[m][n];
+            }
+          }
+        }
+
+      </script>
+      
+
+  </body>
 </html>
 
