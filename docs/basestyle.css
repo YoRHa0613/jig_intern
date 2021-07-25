@@ -1,6 +1,7 @@
 @charset "UTF-8";
 body{
   font-family: 'Kokoro',serif;
+  background: #DDDDDD;
 }
 /*@media screen and (min-width:800px) { /*ブラウザの幅によって表示を変える*/
   
@@ -11,6 +12,7 @@ body{
   color: #000000;
   font-size: 3vw;
   background-color: #ffffff;
+  border: 3px solid #000;
 }
 
 .txt-type1{
@@ -22,7 +24,13 @@ body{
 
 table{
   text-align: center;
-  background-color: #ffffff;/*背景色*/
   border-collapse: collapse;
 }
 
+input{
+  width: 50px;
+}
+
+.calc-btn:hover {
+  cursor: pointer;
+}

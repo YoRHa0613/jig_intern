@@ -19,13 +19,13 @@
           
           <table border='1'> <!--表(行列A)-->
             <tr><!--行-->
-              <td><input type="number" class="box" name="A1" value="0"></td><!--セル(行列の要素)--> <!--nameを配列にしたいんだが-->
-              <td><input type="number" class="box" name="A2" value="0"></td>
+              <td><input type="number" class="box" name="A1" ></td><!--セル(行列の要素)--> <!--nameを配列にしたいんだが-->
+              <td><input type="number" class="box" name="A2" ></td>
             </tr>
 
             <tr>
-              <td><input type="number" class="box" name="A3" value="0"></td>
-              <td><input type="number" class="box" name="A4" value="0"></td>
+              <td><input type="number" class="box" name="A3" ></td>
+              <td><input type="number" class="box" name="A4" ></td>
             </tr>
           </table>
 
@@ -38,35 +38,35 @@
         
           <table border='1'> <!--表(行列B)-->
             <tr>
-              <td><input type="number" class="box" name="B1" value="0"></td>
-              <td><input type="number" class="box" name="B2" value="0"></td>
+              <td><input type="number" class="box" name="B1" ></td>
+              <td><input type="number" class="box" name="B2" ></td>
             </tr>
 
             <tr>
-              <td><input type="number" class="box" name="B3" value="0"></td>
-              <td><input type="number" class="box" name="B4" value="0"></td>
+              <td><input type="number" class="box" name="B3" ></td>
+              <td><input type="number" class="box" name="B4" ></td>
             </tr>
           </table>
 
         </td>
       </tr>
     </table>
+    
+    <p><input type="button" class="calc-btn" onclick="calc(A1.value,A2.value,A3.value,A4.value,B1.value,B2.value,B3.value,B4.value);" value="計算"></p> <!--ボタンを押したら計算結果を表示-->
 
-      <p><input type="button" class="calc-btn" onclick="calc(A1.value,A2.value,A3.value,A4.value,B1.value,B2.value,B3.value,B4.value);" value="計算"></p> <!--ボタンを押したら計算結果を表示-->
-
-      <h2 class="txt-type1">行列C</h2>
+    <h2 class="txt-type1">行列C</h2>
           
-          <table border='1'> <!--表(行列C)-->
-            <tr><!--行-->
-              <td><input id="C-0" type="number" class="box" readonly=""></td><!--"C-添え字"(後述)-->
-              <td><input id="C-1" type="number" class="box" readonly=""></td>
-            </tr>
+    <table border='1'> <!--表(行列C)-->
+      <tr><!--行-->
+        <td><input id="C-0" type="number" class="box" readonly=""></td><!--"C-添え字"(後述)-->
+        <td><input id="C-1" type="number" class="box" readonly=""></td>
+      </tr>
 
-            <tr>
-              <td><input id="C-2" type="number" class="box" readonly=""></td>
-              <td><input id="C-3" type="number" class="box" readonly=""></td>
-            </tr>
-          </table>
+      <tr>
+        <td><input id="C-2" type="number" class="box" readonly=""></td>
+        <td><input id="C-3" type="number" class="box" readonly=""></td>
+      </tr>
+    </table>
 
 
 
@@ -84,19 +84,18 @@
               }
             }
           }
-        }
 
-        for(let m=0;m<=1;m++){ /*二次元配列のままではHTML側に値を渡せない？ので"C-添え字"の形で渡す(渡せてんのかこれ)*/
-          for(let n=0;n<=1;n++){ /*↑ https://techacademy.jp/magazine/37409 */
-            for(let l=0;l<=3;l++){
-              document.getElementById("C-"+l).value=C[m][n];
+          for(let m=0;m<=1;m++){ /*二次元配列のままではHTML側に値を渡せない？ので"C-添え字"の形で渡す(渡せてんのかこれ)*/
+            for(let n=0;n<=1;n++){ /*↑ https://techacademy.jp/magazine/37409 */
+              for(let l=0;l<=3;l++){
+                document.getElementById("C-"+l).value=C[m][n];
+              }
             }
           }
+      
         }
-
       </script>
       
-
   </body>
 </html>
 

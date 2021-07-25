@@ -1,0 +1,102 @@
+<style>
+  .calc-btn {
+    width: 80px;
+    height: 30px;
+    border: 1px solid #ffffff;
+  }
+  .calc-btn:hover {
+    cursor: pointer;
+  }
+  </style>
+
+  <head>
+  	<meta charset="UTF-8">  <!--文字コードの設定-->
+  	<meta name="viewport" content="width=device-width, initial-scale=1"> <!--おまじない(表示関係の設定)-->
+  	<link rel="stylesheet" type="text/css" href="./basestyle.css">  <!--おまじない(css,javascriptの読み込み的な)-->
+	  <link href="https://fonts.googleapis.com/earlyaccess/kokoro.css" rel="stylesheet"> <!--こころ明朝体使いたかっただけ-->
+  </head>
+
+  <header>
+    <h1 class="header-title">サンプルサイト by YoRHa</h1>
+  </header>
+
+  <form>
+		<table border="0">
+    	<tr>
+				<td>
+					<h2 class="txt-type1">行列A</h2>
+
+					<table border="1">
+						<tr>
+							<td>
+								<input type="number" class="box" name="A1">
+							</td>
+							<td>
+								<input type="number" class="box" name="A2">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="number" class="box" name="A3">
+							</td>
+							<td>
+								<input type="number" class="box" name="A4">
+							</td>
+						</tr>
+					</table>
+				
+				</td>
+
+				<td width="30"></td> <!--行列間の隙間-->
+
+				<td>
+      		<h2 class="txt-type1">行列B</h2>
+
+					<table border="1">
+						<tr>
+							<td>
+								<input type="number" class="box" name="B1">
+							</td>
+							<td>
+								<input type="number" class="box" name="B2">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="number" class="box" name="B3">
+							</td>
+							<td>
+								<input type="number" class="box" name="B4">
+							</td>
+						</tr>
+					</table>
+
+				</td>
+			</tr>
+		</table>
+        
+		<p><input type="button" class="calc-btn" onclick="calc(A1.value,A2.value,A3.value,A4.value,B1.value,B2.value,B3.value,B4.value);" value="計算"></p>
+
+
+        <dt>徐脂肪体重(kg)：</dt>
+        <dd><input id="lean" class="box" type="text" readonly=""></dd>
+        <dt>摂取可能カロリー(kcal)：</dt>
+        <dd><input id="cal" class="box" type="text" readonly=""></dd>
+        <dt>タンパク質(g)：</dt>
+        <dd><input id="protein" class="box" type="text" readonly=""></dd>
+        <dt>脂質(g)：</dt>
+        <dd><input id="fat" class="box" type="text" readonly=""></dd>
+        <dt>炭水化物(g)：</dt>
+        <dd><input id="carbo" class="box" type="text" readonly=""></dd>
+    
+  </form>
+    
+	<script>
+    function calc(A1, B1) {
+  	  const lean_value = document.getElementById('lean').value = Math.round((A1 - (A1 * (B1 / 100))) * 100) / 100;
+    	const cal_value = document.getElementById('cal').value = Math.round(lean_value * 40);
+      const protein_value = document.getElementById('protein').value = Math.round(lean_value * 2);
+      const fat_value = document.getElementById('fat').value = Math.round(lean_value * 0.9);
+      const carbo_value = document.getElementById('carbo').value = Math.round((cal_value - (protein_value * 4) - (fat_value * 9)) / 4);
+    }
+  </script>
