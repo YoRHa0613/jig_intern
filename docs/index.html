@@ -52,7 +52,7 @@
       </tr>
     </table>
 
-      <p><input type="button" class="calc-btn" onclick="calc(A1,A2,A3,A4,B1,B2,B3,B4);" value="計算"></p> <!--ボタンを押したら計算結果を表示-->
+      <p><input type="button" class="calc-btn" onclick="calc(A1.value,A2.value,A3.value,A4.value,B1.value,B2.value,B3.value,B4.value);" value="計算"></p> <!--ボタンを押したら計算結果を表示-->
 
       <h2 class="txt-type1">行列C</h2>
           
@@ -71,7 +71,7 @@
 
 
       <script>
-        var C; /*二次元配列の宣言とか無いんか*//*計算結果を入れる変数だよ*/
+        let C=[[0,0],[0,0]]; /*二次元配列の宣言とか無いんか*//*計算結果を入れる変数だよ*/
         function calc(A1,A2,A3,A4,B1,B2,B3,B4){ /*HTML側で配列に値を格納して引数として渡したい感*/
           let A=[[A1,A2],[A3,A4]];/*行列A*/
           let B=[[B1,B2],[B3,B4]];/*行列B*/
@@ -80,7 +80,7 @@
           for(let i=0;i<=1;i++){   /*積を計算するよ*/
             for(let j=0;j<=1;j++){
               for(let k=0;k<=1;k++){
-                C[i][j]=A[i][k]*B[k][j];
+                C[i][j]+=A[i][k]*B[k][j];
               }
             }
           }
@@ -89,7 +89,7 @@
         for(let m=0;m<=1;m++){ /*二次元配列のままではHTML側に値を渡せない？ので"C-添え字"の形で渡す(渡せてんのかこれ)*/
           for(let n=0;n<=1;n++){ /*↑ https://techacademy.jp/magazine/37409 */
             for(let l=0;l<=3;l++){
-              document.getElementById("C-"+l).value+=C[m][n];
+              document.getElementById("C-"+l).value=C[m][n];
             }
           }
         }
