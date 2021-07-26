@@ -31,6 +31,12 @@ input{
   width: 50px;
 }
 
+.calc-btn {
+  width: 80px;
+  height: 30px;
+  border: 1px solid #ffffff;
+}
+
 .calc-btn:hover {
   cursor: pointer;
 }

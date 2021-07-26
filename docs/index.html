@@ -75,6 +75,7 @@
         function calc(A1,A2,A3,A4,B1,B2,B3,B4){ /*HTML側で配列に値を格納して引数として渡したい感*/
           let A=[[A1,A2],[A3,A4]];/*行列A*/
           let B=[[B1,B2],[B3,B4]];/*行列B*/
+          let l;
           
 
           for(let i=0;i<=1;i++){   /*積を計算するよ*/
@@ -87,9 +88,8 @@
 
           for(let m=0;m<=1;m++){ /*二次元配列のままではHTML側に値を渡せない？ので"C-添え字"の形で渡す(渡せてんのかこれ)*/
             for(let n=0;n<=1;n++){ /*↑ https://techacademy.jp/magazine/37409 */
-              for(let l=0;l<=3;l++){
                 document.getElementById("C-"+l).value=C[m][n];
-              }
+                l++;
             }
           }
       

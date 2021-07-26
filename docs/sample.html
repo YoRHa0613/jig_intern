@@ -1,15 +1,6 @@
-<style>
-  .calc-btn {
-    width: 80px;
-    height: 30px;
-    border: 1px solid #ffffff;
-  }
-  .calc-btn:hover {
-    cursor: pointer;
-  }
-  </style>
-
-  <head>
+<!DOCTYPE html>
+<html>
+	<head>
   	<meta charset="UTF-8">  <!--文字コードの設定-->
   	<meta name="viewport" content="width=device-width, initial-scale=1"> <!--おまじない(表示関係の設定)-->
   	<link rel="stylesheet" type="text/css" href="./basestyle.css">  <!--おまじない(css,javascriptの読み込み的な)-->
@@ -20,7 +11,7 @@
     <h1 class="header-title">サンプルサイト by YoRHa</h1>
   </header>
 
-  <form>
+  <form name="cal_22">
 		<table border="0">
     	<tr>
 				<td>
@@ -74,7 +65,12 @@
 				</td>
 			</tr>
 		</table>
-        
+    
+	<p>
+		<input type="radio" name="cal_A" value="0" checked/>A*B=C
+		<input type="radio" name="cal_A" value="1"/>B*A=C
+	</p>
+
 		<p><input type="button" class="calc-btn" onclick="calc(A1.value,A2.value,A3.value,A4.value,B1.value,B2.value,B3.value,B4.value);" value="計算"></p>
 
 		<h2 class="txt-type1">行列C</h2>
@@ -93,22 +89,52 @@
 
 
   </form>
-    
+</html>
+
 	<script>
+
     function calc(A1,A2,A3,A4,B1,B2,B3,B4) {
+			let element=document.getElementsByName("cal_A");
+			let a,i;
+			for(a="",i=element.length;i--;){
+				if(element[i].checked){
+					a=element[i];
+					console.log(i) ;
+					break;
+				}
+			}
+
+			if ( a === "" ) {
+			} else {
+				console.log( a ) ;
+			}
+
+
 			let C=[[0,0],[0,0]];
 			
 			let A=[[A1,A2],[A3,A4]];/*行列A*/
       let B=[[B1,B2],[B3,B4]];/*行列B*/
 			let l=0;
 
-      for(let i=0;i<=1;i++){   /*積を計算するよ*/
-        for(let j=0;j<=1;j++){
-          for(let k=0;k<=1;k++){
-            C[i][j]+=A[i][k]*B[k][j];
-          }
-        }
-      }
+			if(i==0){
+				console.log("0") ;
+      	for(let i=0;i<=1;i++){   /*積を計算するよ*/
+        	for(let j=0;j<=1;j++){
+          	for(let k=0;k<=1;k++){
+            	C[i][j]+=A[i][k]*B[k][j];
+          	}
+        	}
+      	}
+			}else{
+				console.log("1") ;
+				for(let i=0;i<=1;i++){   /*積を計算するよ*/
+        	for(let j=0;j<=1;j++){
+          	for(let k=0;k<=1;k++){
+            	C[i][j]+=B[i][k]*A[k][j];
+          	}
+        	}
+      	}
+			}
 
       for(let m=0;m<=1;m++){ /*二次元配列のままではHTML側に値を渡せない？ので"C-添え字"の形で渡す(渡せてんのかこれ)*/
         for(let n=0;n<=1;n++){ /*↑ https://techacademy.jp/magazine/37409 */
